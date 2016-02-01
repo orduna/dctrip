@@ -20,6 +20,11 @@ Used and slightly modified by Jesus Orduna in 2015
          state/[SR|JR], for example: ILSR, ILJR, ... and there is no
          way to determine who is the senior/junior from the available
          information.
+Modified by Jesus Orduna in 2016
+   --> congressmerge.com was shutdown on 01/28/2016. Modifying to print
+       .gov sites instead.
+
+
 """
 
 """Assign Primaries"""
@@ -113,13 +118,13 @@ for aPrimary in Primaries:
                 aPrimaryObj = aTeamMember
         Count=Count+1
         # JO: resulting string ready to be imported to wiki, with different links
-        #     to congressmerge.com according to whether they are Senate or House
+        #     to .gov sites
         if aCongressPerson.state == aCongressPerson.district :
             # Senate case:
-            print "[http://www.congressmerge.com/onlinedb/cgi-bin/newseek.cgi?site=congressmerge&state=%s %s (%s-%s)] [SCORE=%s] [YOUR CONNECTION STRENGTH=%s]<br>" % (aCongressPerson.state,aCongressPerson.name,aCongressPerson.state,aCongressPerson.district,aCongressPerson.score,aPrimaryObj.scoreForConnection(aCongressPerson))
+            print "[http://www.senate.gov/general/contact_information/senators_cfm.cfm?State=%s %s (%s-%s)] [SCORE=%s] [YOUR CONNECTION STRENGTH=%s]<br>" % (aCongressPerson.state,aCongressPerson.name,aCongressPerson.state,aCongressPerson.district,aCongressPerson.score,aPrimaryObj.scoreForConnection(aCongressPerson))
         else :
             # House case:
-            print "[http://www.congressmerge.com/onlinedb/cgi-bin/newmemberbio.cgi?lang=en&member=%s%s %s (%s-%s)] [SCORE=%s] [YOUR CONNECTION STRENGTH=%s]<br>" % (aCongressPerson.state,aCongressPerson.district,aCongressPerson.name,aCongressPerson.state,aCongressPerson.district,aCongressPerson.score,aPrimaryObj.scoreForConnection(aCongressPerson))
+            print "[http://www.house.gov/representatives/#state_%s %s (%s-%s)] [SCORE=%s] [YOUR CONNECTION STRENGTH=%s]<br>" % (aCongressPerson.state.lower(),aCongressPerson.name,aCongressPerson.state,aCongressPerson.district,aCongressPerson.score,aPrimaryObj.scoreForConnection(aCongressPerson))
     PrimarySummaryList.append([aPrimary,Count])
 
 
